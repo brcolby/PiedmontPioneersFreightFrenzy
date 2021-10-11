@@ -1,6 +1,10 @@
+
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+@TeleOp(name="Teleeeeeee", group="Linear Opmode")
+
 
 public class FrightFrenzyTeleOp extends LinearOpMode {
     public void runOpMode() {
@@ -10,8 +14,11 @@ public class FrightFrenzyTeleOp extends LinearOpMode {
 
         waitForStart();
 
-        while(opModeIsActive())
+        while(opModeIsActive()) {
             robot.update();
+            robot.drive.setLeftPower(robot.gamepad1.left_stick_y);
+            robot.drive.setRightPower(robot.gamepad1.right_stick_x);
+        }
     }
 
 }
