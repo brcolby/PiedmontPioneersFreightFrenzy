@@ -1,5 +1,5 @@
 package org.firstinspires.ftc.teamcode;
 
-public interface RobotAction {
+public interface RobotAction extends Runnable{
     void run();
 }
