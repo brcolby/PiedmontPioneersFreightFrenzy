@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import java.util.function.BooleanSupplier;
 
-public class TeleOpManager{
+public class TeleOpManager {
     public BooleanSupplier trigger;
     public RobotAction action;
 

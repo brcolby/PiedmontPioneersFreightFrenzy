@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-
 import org.firstinspires.ftc.teamcode.subsystems.Arm;
 import org.firstinspires.ftc.teamcode.subsystems.Carousel;
 import org.firstinspires.ftc.teamcode.subsystems.Drive;
@@ -18,8 +17,8 @@ public class Robot {
     public Carousel carousel;
     public Drive drive;
     public Gamepad gamepad1, gamepad2;
-    public Robot(HardwareMap hardwareMap2, Gamepad gamepad1, Gamepad gamepad2)
-    {
+
+    public Robot(HardwareMap hardwareMap2, Gamepad gamepad1, Gamepad gamepad2) {
         arm = new Arm(this);
         carousel = new Carousel(this);
         drive = new Drive(this);
@@ -31,8 +30,7 @@ public class Robot {
         this.gamepad1 = gamepad1;
         this.gamepad2 = gamepad2;
     }
-    public void update()
-    {
+    public void update() {
         for(SubSystems i : subSystems)
             i.update();
 

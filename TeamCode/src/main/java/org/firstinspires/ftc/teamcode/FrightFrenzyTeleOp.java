@@ -2,9 +2,8 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 @TeleOp(name="Teleeeeeee", group="Linear Opmode")
-
-
 public class FrightFrenzyTeleOp extends LinearOpMode {
     public void runOpMode() {
         Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
