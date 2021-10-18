@@ -13,8 +13,8 @@ public class Drive implements SubSystems{
     public double leftPower;
     public double rightPower;
     Robot robot;
-    public Drive(Robot robot)
-    {
+
+    public Drive(Robot robot) {
         this.robot = robot;
         leftFront = robot.hardwareMap.get(DcMotor.class, "front_left");
         leftBack = robot.hardwareMap.get(DcMotor.class, "back_left");
@@ -33,6 +33,7 @@ public class Drive implements SubSystems{
         rightFront.setPower(rightPower);
         rightBack.setPower(rightPower);
     }
+
     public void setLeftPower(double x)
     {
         leftPower = x;
