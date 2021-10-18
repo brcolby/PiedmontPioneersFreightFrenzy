@@ -20,14 +20,15 @@ public class Robot {
     public Gamepad gamepad1, gamepad2;
     public Robot(HardwareMap hardwareMap2, Gamepad gamepad1, Gamepad gamepad2)
     {
+        hardwareMap = hardwareMap2;
         arm = new Arm(this);
         carousel = new Carousel(this);
         drive = new Drive(this);
         subSystems = new ArrayList<>();
+        teleOpManagers = new ArrayList<>();
         subSystems.add(arm);
         subSystems.add(carousel);
         subSystems.add(drive);
-        hardwareMap = hardwareMap2;
         this.gamepad1 = gamepad1;
         this.gamepad2 = gamepad2;
     }

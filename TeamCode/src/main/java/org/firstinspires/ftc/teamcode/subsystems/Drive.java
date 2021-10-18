@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.subsystems;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.teamcode.Robot;
 
@@ -18,7 +19,11 @@ public class Drive implements SubSystems{
         leftFront = robot.hardwareMap.get(DcMotor.class, "front_left");
         leftBack = robot.hardwareMap.get(DcMotor.class, "back_left");
         rightFront = robot.hardwareMap.get(DcMotor.class, "front_right");
-        rightBack = robot.hardwareMap.get(DcMotor.class, "front_left");
+        rightBack = robot.hardwareMap.get(DcMotor.class, "back_right");
+
+        leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
 
     }
     @Override
