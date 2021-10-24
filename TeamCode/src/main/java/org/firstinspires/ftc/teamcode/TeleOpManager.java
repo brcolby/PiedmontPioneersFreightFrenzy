@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
 import java.util.function.BooleanSupplier;
-import java.util.function.DoubleSupplier;
 
 public class TeleOpManager {
     public BooleanSupplier trigger;
@@ -23,11 +22,16 @@ public class TeleOpManager {
 
     public void update() {
         if (!toggle) {
-            if (trigger.getAsBoolean())
+            System.out.println("Toggle = False");
+            if (trigger.getAsBoolean()) {
+                System.out.println("Button = true");
                 action.run();
+                System.out.println("Action run");
+            }
         }
 
         else if (toggle) {
+            System.out.println("Toggle = False");
             if (trigger.getAsBoolean()) {
                 if (!prevState)
                     state = !state;

@@ -36,10 +36,14 @@ public class Robot {
         for(SubSystems i : subSystems)
             i.update();
 
-        for(TeleOpManager i: teleOpManagers)
+        for(TeleOpManager i: teleOpManagers) {
             i.update();
+            System.out.println("teleOpManagers Updating");
+        }
     }
     public void createTeleOpManager(TeleOpManager teleOpManager) {
         teleOpManagers.add(teleOpManager);
+        System.out.println("teleOpManager Added to List");
+        System.out.println(teleOpManagers);
     }
 }
