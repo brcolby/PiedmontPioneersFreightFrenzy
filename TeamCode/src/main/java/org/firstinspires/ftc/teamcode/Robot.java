@@ -14,16 +14,18 @@ import org.firstinspires.ftc.teamcode.subsystems.SubSystems;
 import java.util.ArrayList;
 
 public class Robot {
-    public ArrayList<SubSystems> subSystems;
+    public ArrayList<SubSystems> subSystems; // list of subsystems that we go through and update
     public ArrayList<TeleOpManager> teleOpManagers;
     public HardwareMap hardwareMap;
+    // parts of the robot
     public Arm arm;
     public Carousel carousel;
     public Drive drive;
+    // the game pads
     public Gamepad gamepad1, gamepad2;
 
-    public Robot(HardwareMap hardwareMap2, Gamepad gamepad1, Gamepad gamepad2)
-    {
+    public Robot(HardwareMap hardwareMap2, Gamepad gamepad1, Gamepad gamepad2) {
+        // initializing all of our variables
         hardwareMap = hardwareMap2;
         arm = new Arm(this);
         carousel = new Carousel(this);
@@ -36,6 +38,7 @@ public class Robot {
         this.gamepad1 = gamepad1;
         this.gamepad2 = gamepad2;
     }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void update() {
         for(SubSystems i : subSystems)
@@ -45,7 +48,8 @@ public class Robot {
             i.update();
             System.out.println("teleOpManagers Updating");
         }
-    }
+    } // goes through the subsystem list and updates all of them
+
     public void createTeleOpManager(TeleOpManager teleOpManager) {
         teleOpManagers.add(teleOpManager);
         System.out.println("teleOpManager Added to List");

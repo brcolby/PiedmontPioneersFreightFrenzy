@@ -20,7 +20,7 @@ public class TeleOpManager {
         toggle = true;
     }
 
-    public void update() {
+   public void update() {
         if (!toggle) {
             System.out.println("Toggle = False");
             if (trigger.getAsBoolean()) {
@@ -29,8 +29,7 @@ public class TeleOpManager {
                 System.out.println("Action run");
             }
         }
-
-        else if (toggle) {
+        else {
             System.out.println("Toggle = True");
             if (trigger.getAsBoolean()) {
                 if (!prevState)
@@ -41,6 +40,7 @@ public class TeleOpManager {
                 if (prevState)
                     prevState = false;
             }
+
             if(state)
                 action.run();
             else
