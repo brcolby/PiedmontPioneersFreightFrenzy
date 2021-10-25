@@ -31,7 +31,7 @@ public class TeleOpManager {
         }
 
         else if (toggle) {
-            System.out.println("Toggle = False");
+            System.out.println("Toggle = True");
             if (trigger.getAsBoolean()) {
                 if (!prevState)
                     state = !state;
