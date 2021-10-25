@@ -1,5 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.teamcode.subsystems.Arm;
@@ -32,6 +36,7 @@ public class Robot {
         this.gamepad1 = gamepad1;
         this.gamepad2 = gamepad2;
     }
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void update() {
         for(SubSystems i : subSystems)
             i.update();
