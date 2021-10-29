@@ -38,15 +38,15 @@ public class FrightFrenzyTeleOp extends LinearOpMode {
             }
             if(gamepad2.dpad_down)
             {
-
+                robot.intake.setDirection(1,-1);
             }
             else if(gamepad2.dpad_up)
             {
-
+                robot.intake.setDirection(-1, 1);
             }
             else
             {
-
+                robot.intake.setDirection(0,0);
             }
             robot.update();
         }
