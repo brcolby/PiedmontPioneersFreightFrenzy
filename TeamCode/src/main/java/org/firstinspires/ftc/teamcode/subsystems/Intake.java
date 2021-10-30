@@ -10,8 +10,8 @@ public class Intake implements SubSystems{
     CRServo servoOne;
     CRServo servoTwo;
     Robot robot;
-    double powerLeft = 0;
-    double powerRight = 0;
+    double powerLeft;
+    double powerRight;
 
     public Intake(Robot robot)
     {
