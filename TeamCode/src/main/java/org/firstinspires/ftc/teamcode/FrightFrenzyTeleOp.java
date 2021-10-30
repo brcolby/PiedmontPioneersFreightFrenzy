@@ -46,11 +46,11 @@ public class FrightFrenzyTeleOp extends LinearOpMode {
 
           if(gamepad2.y) {
               //close arm
-                robot.arm.setClawPower(-0.1);
+                robot.arm.setClawPower(-1);
             }
           else if(gamepad2.x) {
               //open arm
-                robot.arm.setClawPower(0.1);
+                robot.arm.setClawPower(1);
             }
           else
           {
