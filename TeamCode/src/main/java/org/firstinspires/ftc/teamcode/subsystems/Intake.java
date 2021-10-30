@@ -6,15 +6,14 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Robot;
 
-public class Intake implements SubSystems{
+public class Intake implements SubSystems {
     CRServo servoOne;
     CRServo servoTwo;
     Robot robot;
     double powerLeft;
     double powerRight;
 
-    public Intake(Robot robot)
-    {
+    public Intake(Robot robot) {
         servoOne = robot.hardwareMap.get(CRServo.class, "left_servo");
         servoTwo = robot.hardwareMap.get(CRServo.class, "right_servo");
         this.robot = robot;
