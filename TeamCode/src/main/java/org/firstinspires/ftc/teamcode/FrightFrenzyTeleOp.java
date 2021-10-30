@@ -21,9 +21,9 @@ public class FrightFrenzyTeleOp extends LinearOpMode {
             robot.drive.setLeftPower(robot.gamepad1.left_stick_y);
             robot.drive.setRightPower(robot.gamepad1.right_stick_y);
             if(robot.gamepad2.a)
-                robot.carousel.setPower(1.0);
+                robot.carousel.setPower(0.5);
             else if(robot.gamepad2.b)
-                robot.carousel.setPower(-1);
+                robot.carousel.setPower(-0.5);
             else {
                 robot.carousel.setPower(0);
             }
@@ -37,15 +37,16 @@ public class FrightFrenzyTeleOp extends LinearOpMode {
                 robot.arm.setPower(0);
             }
 
-            if(gamepad2.dpad_down) {
-                robot.intake.setDirection(1,-1);
-            }
-            else if(gamepad2.dpad_up) {
-                robot.intake.setDirection(-1, 1);
-            }
-            else {
-                robot.intake.setDirection(0,0);
-            }
+//            if(gamepad2.dpad_down) {
+//                robot.intake.setDirection(1,1);
+//            }
+//            else if(gamepad2.dpad_up) {
+//                robot.intake.setDirection(1, 1);
+//            }
+//            else {
+//                robot.intake.setDirection(0,0);
+//            }
+            robot.intake.setDirection(1,1);
             robot.update();
         }
     }

@@ -21,7 +21,9 @@ public class Intake implements SubSystems {
     }
     public void update() {
         servoOne.setPower(powerLeft);
+        System.out.println(powerLeft);
         servoTwo.setPower(powerRight);
+        System.out.println(powerRight);
     }
     public void setDirection(double powerLeft, double powerRight) {
         this.powerLeft = powerLeft;

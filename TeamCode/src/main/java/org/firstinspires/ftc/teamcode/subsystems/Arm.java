@@ -14,9 +14,10 @@ public class Arm implements SubSystems {
         motor2 = robot.hardwareMap.get(DcMotor.class, "arm_motor2");
     }
     @Override
+
     public void update() {
         motor.setPower(power);
-        motor.setPower(-1*power);
+        motor2.setPower(-1*power);
     }
     public void setPower(double setPower) {
         power = setPower;
