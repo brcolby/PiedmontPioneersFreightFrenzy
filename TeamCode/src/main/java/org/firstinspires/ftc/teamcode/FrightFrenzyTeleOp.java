@@ -19,8 +19,8 @@ public class FrightFrenzyTeleOp extends LinearOpMode {
         waitForStart();
         while(opModeIsActive()) {
             //drive
-            robot.drive.setLeftPower(robot.gamepad1.left_stick_y);
-            robot.drive.setRightPower(robot.gamepad1.right_stick_y);
+            robot.drive.setLeftPower(robot.gamepad1.left_stick_y, robot.gamepad1.left_bumper);
+            robot.drive.setRightPower(robot.gamepad1.right_stick_y, robot.gamepad1.left_bumper);
             if(robot.gamepad2.a)
                 //forwards
                 robot.carousel.setPower(0.5);

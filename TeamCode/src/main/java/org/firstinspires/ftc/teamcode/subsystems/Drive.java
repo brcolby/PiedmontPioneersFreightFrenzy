@@ -35,13 +35,27 @@ public class Drive implements SubSystems{
         rightBack.setPower(rightPower);
     }
 
-    public void setLeftPower(double x)
+    public void setLeftPower(double x, boolean fineTune)
     {
-        leftPower = x;
+        if(fineTune == true)
+        {
+            leftPower = x/3;
+        }
+        else
+        {
+            leftPower = x;
+        }
     }
-    public void setRightPower(double x)
+    public void setRightPower(double x, boolean fineTune)
     {
-        rightPower = x;
+        if(fineTune == true) {
+            rightPower = x/3;
+        }
+        else
+        {
+            rightPower = x;
+        }
+
     }
 
 }
