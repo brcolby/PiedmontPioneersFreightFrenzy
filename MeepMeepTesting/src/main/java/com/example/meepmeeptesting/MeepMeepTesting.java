@@ -13,7 +13,7 @@ public class MeepMeepTesting {
         // With a field size of 800 pixels
         MeepMeep mm = new MeepMeep(800)
                 // Set field image
-                .setBackground(MeepMeep.Background.FIELD_ULTIMATE_GOAL_DARK)
+                .setBackground(MeepMeep.Background.FIELD_FREIGHT_FRENZY)
                 // Set theme
                 .setTheme(new ColorSchemeRedDark())
                 // Background opacity from 0-1
