@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.teamcode.Robot;
 
-public class Drive implements SubSystems{
+public class Drive implements SubSystems {
     public DcMotor leftFront;
     public DcMotor leftBack;
     public DcMotor rightFront;
@@ -35,27 +35,17 @@ public class Drive implements SubSystems{
         rightBack.setPower(rightPower);
     }
 
-    public void setLeftPower(double x, boolean fineTune)
-    {
-        if(fineTune == true)
-        {
-            leftPower = x/3;
-        }
+    public void setLeftPower(double x, boolean fineTune) {
+        if (fineTune)
+            leftPower = x / 3;
         else
-        {
             leftPower = x;
-        }
     }
-    public void setRightPower(double x, boolean fineTune)
-    {
-        if(fineTune == true) {
-            rightPower = x/3;
-        }
+
+    public void setRightPower(double x, boolean fineTune) {
+        if (fineTune)
+            rightPower = x / 3;
         else
-        {
             rightPower = x;
-        }
-
     }
-
 }

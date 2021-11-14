@@ -22,5 +22,4 @@ public class Carousel implements SubSystems {
     public void setPower(double setPower) {
         power = setPower;
     } // sets power of motor / which direction the motor goes
-
 }

@@ -15,8 +15,7 @@ public class DucksBlue extends LinearOpMode {
     public Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
 
     public void runOpMode() {
-        TrajectorySequence trajectory = drive.trajectorySequenceBuilder(
-                new Pose2d(-35, 60, Math.toRadians(-90)))
+          TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d(-35, 60, Math.toRadians(-90)))
                 .forward(24)
                 .turn(Math.toRadians(45))
                 .forward(-30)
