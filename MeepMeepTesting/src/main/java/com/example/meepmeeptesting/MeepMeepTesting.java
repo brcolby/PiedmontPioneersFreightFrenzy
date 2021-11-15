@@ -24,7 +24,7 @@ public class MeepMeepTesting {
                 // Set constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 15)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-35, 60, Math.toRadians(-90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(35, -60, Math.toRadians(-90)))
                                 .forward(24)
                                 .turn(Math.toRadians(45))
                                 .forward(-30)
@@ -35,6 +35,31 @@ public class MeepMeepTesting {
                                 .build()
                 )
                 .start();
+
+        MeepMeep ducksRed = new MeepMeep(800)
+                // Set field image
+                .setBackground(MeepMeep.Background.FIELD_FREIGHT_FRENZY)
+                // Set theme
+                .setTheme(new ColorSchemeRedDark())
+                // Background opacity from 0-1
+                .setBackgroundAlpha(1f)
+                // Set drive type to tank
+                .setDriveTrainType(DriveTrainType.TANK)
+                // Set constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
+                .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 15)
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(-35, -60, Math.toRadians(90)))
+                                .forward(24)
+                                .turn(Math.toRadians(-45))
+                                .forward(-30)
+                                .waitSeconds(3)
+                                .forward(30)
+                                .turn(Math.toRadians(-45))
+                                .forward(-25)
+                                .build()
+                )
+                .start();
+
     }
 
     public static void GetOutOfWayStuff() {
