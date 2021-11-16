@@ -10,7 +10,7 @@ public class Arm implements SubSystems {
     public DcMotor motor2;
     public DcMotorEx armMotor;
     Robot robot;
-    double power;
+    double power ;
     double current;
 
     public Arm(Robot robot) {

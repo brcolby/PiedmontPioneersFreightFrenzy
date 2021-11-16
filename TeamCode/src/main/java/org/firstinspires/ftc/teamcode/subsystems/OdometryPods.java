@@ -7,6 +7,7 @@ import org.firstinspires.ftc.teamcode.Robot;
 public class OdometryPods implements SubSystems{
     public Servo servo1, servo2, servo3;
     Robot robot;
+    double position = 0;
 
     public OdometryPods(Robot robot) {
         this.robot = robot;
@@ -16,6 +17,12 @@ public class OdometryPods implements SubSystems{
     }
 
     public void update() {
+        servo1.setPosition(position);
+        servo2.setPosition(position);
+        servo3.setPosition(position);
+    }
 
+    public void setPosition(double position) {
+        this.position = position;
     }
 }
