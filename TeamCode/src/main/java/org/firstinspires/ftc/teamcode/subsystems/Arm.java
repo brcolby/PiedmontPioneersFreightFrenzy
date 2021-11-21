@@ -11,7 +11,7 @@ public class Arm implements SubSystems {
     public DcMotorEx armMotor;
     Robot robot;
     double power ;
-    double current;
+    int current;
 
     public Arm(Robot robot) {
         this.robot = robot;
@@ -24,14 +24,14 @@ public class Arm implements SubSystems {
     public void update() {
         motor.setPower(power);
         motor2.setPower(-1 * power);
-        armMotor.setPower(current);
+        armMotor.setTargetPosition(current);
     }
 
     public void setPower(double setPower) {
         power = setPower;
     }
 
-    public void setClawPower(double power) {
+    public void setClawPower(int power) {
         current = power;
     }
 }
