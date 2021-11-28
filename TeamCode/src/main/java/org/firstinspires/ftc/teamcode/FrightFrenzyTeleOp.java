@@ -41,13 +41,14 @@ public class FrightFrenzyTeleOp extends LinearOpMode {
                 robot.arm.setPower(0);
 
             if (gamepad2.y)
-                //close arm
-                robot.arm.setClawPower(-1);
+                //servo rotate forward
+                robot.arm.setServo(-1);
             else if (gamepad2.x)
-                //open arm
-                robot.arm.setClawPower(0);
+                //servo rotate backwards
+                robot.arm.setServo(-1);
             else
-                robot.arm.setClawPower(300);
+                //stop servo
+                robot.arm.setPower(0);
             robot.update();
         }
     }

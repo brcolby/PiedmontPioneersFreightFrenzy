@@ -29,12 +29,12 @@ public class Arm implements SubSystems {
 
     @Override
     public void update() {
-        servo.setPower(1);
+        servo.setPower(current);
         motor.setPower(power);
         motor2.setPower(-1 * power);
-        if(motor2.getTargetPosition() >= motorPosition)
+        if(motor2.getCurrentPosition() >= motorPosition)
         {
-            armMotor.setTargetPosition(motorPosition);
+            armMotor.setTargetPosition(flipPosition);
         }
         else
         {
@@ -46,7 +46,15 @@ public class Arm implements SubSystems {
         power = setPower;
     }
 
-    public void setClawPower(int power) {
+    public void setServo(int power) {
         current = power;
+    }
+    public int getFlipPosition()
+    {
+        return armMotor.getCurrentPosition();
+    }
+    public int getMotorPosition()
+    {
+        return motor2.getCurrentPosition();
     }
 }
