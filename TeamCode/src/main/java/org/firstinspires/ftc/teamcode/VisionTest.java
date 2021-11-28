@@ -1,12 +1,16 @@
-package org.firstinspires.ftc.teamcode.vision;
+package org.firstinspires.ftc.teamcode;
 
+import com.acmerobotics.dashboard.FtcDashboard;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.teamcode.vision.VisionPipeline;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 
+@TeleOp(name = "VisionTest", group = "Linear Opmode")
 public class VisionTest extends LinearOpMode {
     OpenCvCamera camera;
 
@@ -24,8 +28,13 @@ public class VisionTest extends LinearOpMode {
             }
             public void onError(int errorCode) { }
         });
+        camera.resumeViewport();
 
         waitForStart();
-        VisionPipeline.Pos position = detector.getPosition();
+        VisionPipeline.POS position = detector.getPosition();
+
+        while(opModeIsActive()) {
+            position = detector.getPosition();
+        }
     }
 }
