@@ -13,68 +13,81 @@ public class VisionPipeline extends OpenCvPipeline {
     Telemetry telemetry;
     Mat mat = new Mat();
 
-    static final Rect leftBox = new Rect(new Point(0, 40), new Point(106, 140));
-    static final Rect rightBox = new Rect(new Point(106, 40), new Point(212, 140));
-    static final Rect centerBox = new Rect(new Point(212, 40), new Point(318, 140));
+    static final Rect LEFTBOX = new Rect(
+            new Point(0, 140),
+            new Point(106, 240)
+    );
+    static final Rect CENTERBOX = new Rect(
+            new Point(106, 140),
+            new Point(212, 240)
+    );
+    static final Rect RIGHTBOX = new Rect(
+            new Point(212, 140),
+            new Point(320, 240)
+    );
 
-
-
-    public enum Pos {
+    public enum POS {
         LEFT,
         RIGHT,
         CENTER
     }
+    private POS pos;
 
-    private Pos position;
-
-    public VisionPipeline(Telemetry telemetry) {
-        this.telemetry = telemetry;
+    public VisionPipeline(Telemetry t) {
+        telemetry = t;
     }
 
-    @Override
     public Mat processFrame(Mat input) {
+        // convert RBB to HSV
         Imgproc.cvtColor(input, mat, Imgproc.COLOR_RGB2HSV);
-        Scalar lowHSV = new Scalar(23, 50, 70);
-        Scalar highHSV = new Scalar(32, 255, 255);
+        Scalar lowHSV = new Scalar(25, 50, 70); // duck lower
+        Scalar highHSV = new Scalar(28, 255, 255); // duck upper
+
+        // convert to b/w by removing all colors not in range
         Core.inRange(mat, lowHSV, highHSV, mat);
-        Mat left = mat.submat(leftBox);
-        Mat center  = mat.submat(centerBox);
-        Mat right = mat.submat(rightBox);
-        double leftValue = Core.sumElems(left).val[0]/leftBox.area()/255;
-        double centerValue = Core.sumElems(center).val[0]/centerBox.area()/255;
-        double rightValue = Core.sumElems(right).val[0]/centerBox.area()/255;
+
+        // create 3 submats for left/right/center
+        Mat left = mat.submat(LEFTBOX);
+        Mat center = mat.submat(CENTERBOX);
+        Mat right = mat.submat(RIGHTBOX);
+
+        // get val for each submat by dividing average hue by area of box
+        double leftValue = Core.sumElems(left).val[0] / LEFTBOX.area() / 255;
+        double centerValue = Core.sumElems(center).val[0] / CENTERBOX.area() / 255;
+        double rightValue = Core.sumElems(right).val[0] / RIGHTBOX.area() / 255;
+
         left.release();
         center.release();
         right.release();
 
-        double max1 = Math.max(leftValue, centerValue);
-        double max2 = Math.max(max1, rightValue);
-         if(max2 == leftValue)
-         {
-             position = Pos.LEFT;
-         }
-         else if(max2 == rightValue)
-         {
-             position = Pos.RIGHT;
-         }
-         else
-         {
-             position = Pos.CENTER;
-         }
-         telemetry.addData("Target", position);
-         telemetry.update();
+        // max = max value (highest amount of green/yellow)
+        double maxLeftRight = Math.max(leftValue, rightValue);
+        double max = Math.max(maxLeftRight, centerValue);
 
-         Imgproc.cvtColor(mat, mat, Imgproc.COLOR_GRAY2RGB);
-         Scalar colorTarget = new Scalar(0, 225, 0);
-         Scalar colorEmpty = new Scalar (225, 0, 0);
-         Imgproc.rectangle(mat, leftBox, position == Pos.LEFT ? colorTarget:colorEmpty);
-        Imgproc.rectangle(mat, centerBox, position == Pos.CENTER ? colorTarget:colorEmpty);
-        Imgproc.rectangle(mat, rightBox, position == Pos.RIGHT ? colorTarget:colorEmpty);
+        if (max == leftValue)
+            pos = POS.LEFT;
+        else if (max == centerValue)
+            pos = POS.CENTER;
+        else if (max == rightValue)
+            pos = POS.RIGHT;
+
+        telemetry.addData("Vision target location: ", pos);
+        telemetry.update();
+
+        // b/w to RGB
+        Imgproc.cvtColor(mat, mat, Imgproc.COLOR_GRAY2RGB);
+        Scalar colorTarget = new Scalar(0, 255, 0);
+        Scalar colorEmpty = new Scalar(255, 0, 0);
+
+        // draw green rect on target box/red on empty box
+        Imgproc.rectangle(mat, LEFTBOX, pos == POS.LEFT ? colorTarget:colorEmpty);
+        Imgproc.rectangle(mat, CENTERBOX, pos == POS.CENTER ? colorTarget:colorEmpty);
+        Imgproc.rectangle(mat, RIGHTBOX, pos == POS.RIGHT ? colorTarget:colorEmpty);
+
         return mat;
     }
-    public Pos getPosition()
-    {
-        return position;
-    }
 
+    public POS getPosition() {
+        return pos;
+    }
 }
