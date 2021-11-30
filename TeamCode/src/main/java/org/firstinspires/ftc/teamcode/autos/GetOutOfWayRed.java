@@ -1,8 +1,10 @@
 package org.firstinspires.ftc.teamcode.autos;
 
+import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Robot;
+import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 
 public class GetOutOfWayRed extends LinearOpMode {
     public enum State{
@@ -26,7 +28,6 @@ public class GetOutOfWayRed extends LinearOpMode {
             robot.update();
             switch (state) {
                 case STARTED:
-                    break;
                 case STOPPED:
                     break;
             }

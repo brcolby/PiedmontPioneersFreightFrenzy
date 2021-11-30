@@ -11,7 +11,6 @@ import org.firstinspires.ftc.teamcode.subsystems.Arm;
 import org.firstinspires.ftc.teamcode.subsystems.Carousel;
 import org.firstinspires.ftc.teamcode.subsystems.Drive;
 import org.firstinspires.ftc.teamcode.subsystems.SubSystems;
-import org.firstinspires.ftc.teamcode.subsystems.OdometryPods;
 
 import java.util.ArrayList;
 
@@ -23,7 +22,6 @@ public class Robot {
     public Arm arm;
     public Carousel carousel;
     public Drive drive;
-    public OdometryPods odometryPods;
     // the game pads
     public Gamepad gamepad1, gamepad2;
     // Intake intake;
@@ -34,7 +32,6 @@ public class Robot {
         arm = new Arm(this);
         carousel = new Carousel(this);
         drive = new Drive(this);
-        odometryPods = new OdometryPods(this);
         // intake = new  Intake(this);
         subSystems = new ArrayList < > ();
         teleOpManagers = new ArrayList < > ();

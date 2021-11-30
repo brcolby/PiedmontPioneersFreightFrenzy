@@ -1,8 +1,10 @@
 package org.firstinspires.ftc.teamcode.autos;
 
+import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Robot;
+import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 
 public class DucksRed extends LinearOpMode {
     public enum State{
@@ -40,8 +42,6 @@ public class DucksRed extends LinearOpMode {
                     robot.carousel.setPower(1);
                     break;
                 case CAROUSELOFF:
-                    robot.carousel.setPower(0);
-                    break;
                 case STOPPED:
                     robot.carousel.setPower(0);
                     break;
