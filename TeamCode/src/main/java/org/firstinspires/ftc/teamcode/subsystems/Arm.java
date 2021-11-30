@@ -6,6 +6,8 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 import org.firstinspires.ftc.teamcode.Robot;
 
+//6766.2 encoder ticks
+
 public class Arm implements SubSystems {
     public DcMotor armLiftUpper;
     public DcMotorEx armLiftLower;
@@ -14,6 +16,8 @@ public class Arm implements SubSystems {
     Robot robot;
     double power ;
     double wheelPower;
+
+    double ticks = 6766.2;
 
     public Arm(Robot robot) {
         this.robot = robot;
