@@ -1,37 +1,41 @@
 package org.firstinspires.ftc.teamcode.subsystems;
 
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 import org.firstinspires.ftc.teamcode.Robot;
 
 public class Arm implements SubSystems {
-    public DcMotor motor;
-    public DcMotor motor2;
-    public DcMotorEx armMotor;
+    public DcMotor armLiftUpper;
+    public DcMotorEx armLiftLower;
+    public DcMotor wheel;
+    public CRServo flipBucket;
     Robot robot;
     double power ;
-    int current;
+    double wheelPower;
 
     public Arm(Robot robot) {
         this.robot = robot;
-        motor = robot.hardwareMap.get(DcMotor.class, "arm_motor");
-        motor2 = robot.hardwareMap.get(DcMotor.class, "arm_motor2");
-        armMotor = robot.hardwareMap.get(DcMotorEx.class, "intake_motor");
+        armLiftUpper = robot.hardwareMap.get(DcMotor.class, "arm_motor");
+        armLiftLower = robot.hardwareMap.get(DcMotorEx.class, "arm_motor2");
+        wheel = robot.hardwareMap.get(DcMotor.class, "wheel_intake_motor");
+        flipBucket = robot.hardwareMap.get(CRServo.class, "bucket_motor");
     }
 
     @Override
     public void update() {
-        motor.setPower(power);
-        motor2.setPower(-1 * power);
-        armMotor.setTargetPosition(current);
+        armLiftUpper.setPower(power);
+        armLiftLower.setPower(-1 * power);
+        wheel.setPower(wheelPower);
     }
 
     public void setPower(double setPower) {
         power = setPower;
     }
 
-    public void setClawPower(int power) {
-        current = power;
+    public void setWheelPower(double setWheelPower) {
+        wheelPower = setWheelPower;
     }
+
 }

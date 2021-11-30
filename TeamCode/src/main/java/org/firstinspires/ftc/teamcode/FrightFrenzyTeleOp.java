@@ -7,6 +7,8 @@ import androidx.annotation.RequiresApi;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import java.nio.file.attribute.UserPrincipalLookupService;
+
 @TeleOp(name = "Teleeeeeee", group = "Linear Opmode")
 public class FrightFrenzyTeleOp extends LinearOpMode {
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -40,14 +42,13 @@ public class FrightFrenzyTeleOp extends LinearOpMode {
                 //arm not moving
                 robot.arm.setPower(0);
 
-            if (gamepad2.y)
-                //close arm
-                robot.arm.setClawPower(-1);
-            else if (gamepad2.x)
-                //open arm
-                robot.arm.setClawPower(0);
+            if (robot.gamepad2.x)
+                robot.arm.setWheelPower(1);
+            else if (robot.gamepad2.y)
+                robot.arm.setWheelPower(-1);
             else
-                robot.arm.setClawPower(300);
+                robot.arm.setWheelPower(0);
+
             robot.update();
         }
     }
