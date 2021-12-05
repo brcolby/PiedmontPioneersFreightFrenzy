@@ -3,43 +3,74 @@ package org.firstinspires.ftc.teamcode.subsystems;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.Robot;
 
 //6766.2 encoder ticks
 
 public class Arm implements SubSystems {
-    public DcMotor armLiftUpper;
+    public DcMotorEx armLiftUpper;
     public DcMotorEx armLiftLower;
-    public DcMotor wheel;
-    public CRServo flipBucket;
+    public DcMotor zipTies;
+    public Servo flipBucket;
     Robot robot;
-    double power ;
-    double wheelPower;
-
+    double num;
+    double armPower;
+    double servoPosition;
     double ticks = 6766.2;
+    boolean lock;
+
 
     public Arm(Robot robot) {
         this.robot = robot;
-        armLiftUpper = robot.hardwareMap.get(DcMotor.class, "arm_motor");
+        armLiftUpper = robot.hardwareMap.get(DcMotorEx.class, "arm_motor");
         armLiftLower = robot.hardwareMap.get(DcMotorEx.class, "arm_motor2");
-        wheel = robot.hardwareMap.get(DcMotor.class, "wheel_intake_motor");
-        flipBucket = robot.hardwareMap.get(CRServo.class, "bucket_motor");
+        flipBucket = robot.hardwareMap.get(Servo.class, "servo_bucket");
+        zipTies = robot.hardwareMap.get(DcMotor.class, "intake_motor");
     }
 
     @Override
     public void update() {
-        armLiftUpper.setPower(power);
-        armLiftLower.setPower(-1 * power);
-        wheel.setPower(wheelPower);
+        zipTies.setPower(num);
+        armLiftLower.setPower(armPower);
+        armLiftUpper.setPower(-armPower);
+
+            armLiftLower.setTargetPosition(armLiftLower.getCurrentPosition());
+            armLiftLower.setTargetPosition(armLiftUpper.getCurrentPosition());
+        /*if(servoPosition != 1000)
+            flipBucket.setPosition(servoPosition);
+        else {
+            if (flipBucket.getPosition() > armLiftUpper.getCurrentPosition()*360/6766.2) {
+                flipBucket.setPosition(flipBucket.getPosition() + 1);
+            }
+            else if (flipBucket.getPosition() < armLiftUpper.getCurrentPosition()*360/6766.2) {
+                flipBucket.setPosition(flipBucket.getPosition() - 1);
+            }*/
+        flipBucket.setPosition(servoPosition);
     }
 
-    public void setPower(double setPower) {
-        power = setPower;
+    public void intake(double position)
+    {
+        num = position;
     }
-
-    public void setWheelPower(double setWheelPower) {
-        wheelPower = setWheelPower;
+    public void armSpeed(double position)
+    {
+        armPower = position;
+    }
+    public void servoPower(double servoPosition1)
+    {
+        if(flipBucket.getPosition() - servoPosition1 < 0)
+        {
+            servoPosition1 = 0;
+        }
+        else
+            servoPosition = flipBucket.getPosition() + servoPosition1;
+    }
+    public void lock(boolean x)
+    {
+        lock = x;
     }
 
 }

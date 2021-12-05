@@ -14,8 +14,11 @@ public class FrightFrenzyTeleOp extends LinearOpMode {
         Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
 
 
+
+        robot.arm.flipBucket.setPosition(0.0);
         waitForStart();
         while (opModeIsActive()) {
+            robot.arm.flipBucket.setPosition(0.0);
             //drive
             robot.drive.setLeftPower(robot.gamepad1.left_stick_y, robot.gamepad1.left_bumper);
             robot.drive.setRightPower(robot.gamepad1.right_stick_y, robot.gamepad1.left_bumper);
@@ -30,23 +33,44 @@ public class FrightFrenzyTeleOp extends LinearOpMode {
                 //carousel not moving
                 robot.carousel.setPower(0);
 
-            if (robot.gamepad2.left_trigger > 0.1)
-                //arm down
-                robot.arm.setPower(robot.gamepad2.left_trigger * -1);
-            else if (robot.gamepad2.right_trigger > 0.1)
-                //arm up
-                robot.arm.setPower(robot.gamepad2.right_trigger);
-            else
-                //arm not moving
-                robot.arm.setPower(0);
+            if(robot.gamepad2.x == true)
+            {
+                robot.arm.intake(0.8);
 
-            if (robot.gamepad2.x)
-                robot.arm.setWheelPower(1);
-            else if (robot.gamepad2.y)
-                robot.arm.setWheelPower(-1);
+            }
+            else if(robot.gamepad2.y == true)
+            {
+                robot.arm.intake(-0.33);
+            }
             else
-                robot.arm.setWheelPower(0);
+            {
+                robot.arm.intake(0);
+            }
+            if(robot.gamepad2.right_trigger > 0.1)
+            {
+                robot.arm.armSpeed(gamepad2.right_trigger);
+            }
+            else if(robot.gamepad2.left_trigger > 0.1)
+            {
+                robot.arm.armSpeed(-gamepad2.left_trigger);
+            }
+            else
+            {
+                robot.arm.armSpeed(0.0);
+            }
+            if(gamepad2.right_bumper)
+            {
+                robot.arm.servoPower(-0.1);
 
+            }
+            else if (gamepad2.left_bumper)
+            {
+                robot.arm.servoPower(0.1);
+            }
+            /*if(gamepad2.dpad_down)
+            {
+                robot.arm.lock(true);
+            }*/
             robot.update();
         }
     }
