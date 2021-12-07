@@ -39,7 +39,8 @@ public class DucksBlue extends LinearOpMode {
 
         while(opModeIsActive()) {
             robot.update();
-            switch (state) {
+            {
+           /* switch (state) {
                 case STARTED:
                     break;
                 case CAROUSELON:
@@ -48,7 +49,7 @@ public class DucksBlue extends LinearOpMode {
                 case CAROUSELOFF:
                 case STOPPED:
                     robot.carousel.setPower(0);
-                    break;
+                    break;*/
             }
         }
     }

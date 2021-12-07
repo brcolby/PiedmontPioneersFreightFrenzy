@@ -42,7 +42,7 @@ public class DucksRed extends LinearOpMode {
             switch (state) {
                 case STARTED:
                     break;
-                case CAROUSELON:
+             /*   case CAROUSELON:
                     robot.carousel.setPower(1);
                     break;
                 case CAROUSELOFF:
@@ -50,6 +50,7 @@ public class DucksRed extends LinearOpMode {
                 case STOPPED:
                     robot.carousel.setPower(0);
                     break;
+            }*/
             }
         }
     }
