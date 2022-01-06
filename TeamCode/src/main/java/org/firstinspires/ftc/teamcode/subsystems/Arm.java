@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.Robot;
 //6766.2 encoder ticks
 
 public class Arm implements SubSystems {
-    public DcMotorEx armLiftUpper;
+    public DcMotor armLiftUpper;
     public DcMotorEx armLiftLower;
     public DcMotor zipTies;
     public Servo flipBucket;
@@ -61,12 +61,14 @@ public class Arm implements SubSystems {
     }
     public void servoPower(double servoPosition1)
     {
-        if(flipBucket.getPosition() - servoPosition1 < 0)
-        {
-            servoPosition1 = 0;
-        }
-        else
-            servoPosition = flipBucket.getPosition() + servoPosition1;
+       if(armLiftLower.getCurrentPosition() >= 0 && armLiftLower.getCurrentPosition() <= 600)
+       {
+            servoPosition = servoPosition;
+       }
+       else
+       {
+           servoPosition = servoPosition+servoPosition1;
+       }
     }
     public void lock(boolean x)
     {
