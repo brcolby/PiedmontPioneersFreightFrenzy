@@ -30,6 +30,11 @@ public class Carousel implements SubSystems {
             } else
                 amount = amount + 0.01;
         }
+
+    }
+    public void setPowerAuto(double amount1)
+    {
+        amount = amount1;
     }
     // sets power of motor / which direction the motor goes
 }

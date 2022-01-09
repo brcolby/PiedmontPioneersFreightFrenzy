@@ -37,8 +37,8 @@ public class Arm implements SubSystems {
         armLiftLower.setPower(armPower);
         armLiftUpper.setPower(-armPower);
 
-            armLiftLower.setTargetPosition(armLiftLower.getCurrentPosition());
-            armLiftLower.setTargetPosition(armLiftUpper.getCurrentPosition());
+        armLiftLower.setTargetPosition(armLiftLower.getCurrentPosition());
+        armLiftLower.setTargetPosition(armLiftUpper.getCurrentPosition());
         /*if(servoPosition != 1000)
             flipBucket.setPosition(servoPosition);
         else {
@@ -59,16 +59,8 @@ public class Arm implements SubSystems {
     {
         armPower = position;
     }
-    public void servoPower(double servoPosition1)
-    {
-       if(armLiftLower.getCurrentPosition() >= 0 && armLiftLower.getCurrentPosition() <= 600)
-       {
-            servoPosition = servoPosition;
-       }
-       else
-       {
-           servoPosition = servoPosition+servoPosition1;
-       }
+    public void servoPower(double servoPosition1) {
+       servoPosition += servoPosition1;
     }
     public void lock(boolean x)
     {
