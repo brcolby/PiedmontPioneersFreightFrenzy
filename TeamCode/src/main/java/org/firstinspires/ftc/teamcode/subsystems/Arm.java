@@ -13,7 +13,7 @@ public class Arm implements SubSystems {
     public DcMotor armLiftUpper;
     public DcMotorEx armLiftLower;
     public DcMotor zipTies;
-    public CRServo flipBucket;
+    public Servo flipBucket;
     Robot robot;
     double num;
     double armPower;
@@ -26,7 +26,7 @@ public class Arm implements SubSystems {
         this.robot = robot;
         armLiftUpper = robot.hardwareMap.get(DcMotorEx.class, "arm_motor");
         armLiftLower = robot.hardwareMap.get(DcMotorEx.class, "arm_motor2");
-        flipBucket = robot.hardwareMap.get(CRServo.class, "servo_bucket");
+        flipBucket = robot.hardwareMap.get(Servo.class, "servo_bucket");
         zipTies = robot.hardwareMap.get(DcMotor.class, "intake_motor");
     }
 
@@ -48,7 +48,7 @@ public class Arm implements SubSystems {
             else if (flipBucket.getPosition() < armLiftUpper.getCurrentPosition()*360/6766.2) {
                 flipBucket.setPosition(flipBucket.getPosition() - 1);
             }*/
-        flipBucket.setPower(servoPosition);
+        flipBucket.setPosition(servoPosition);
     }
 
     public void intake(double position)
@@ -60,7 +60,7 @@ public class Arm implements SubSystems {
         armPower = position;
     }
     public void servoPower(double servoPosition1) {
-       servoPosition = servoPosition1;
+       servoPosition += servoPosition1;
     }
     public void lock(boolean x)
     {

@@ -14,7 +14,7 @@ public class Auto {
         public void runOpMode() {
             Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
 
-            robot.arm.flipBucket.setPosition(0.0);
+  //          robot.arm.flipBucket.setPosition(0.0);
             waitForStart();
             robot.drive.setLeftPower(0.5, false);
             robot.drive.setRightPower(0.5, false );
