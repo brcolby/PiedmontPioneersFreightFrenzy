@@ -50,7 +50,7 @@ public class Arm implements SubSystems {
         armPower = position;
     }
     public void servoPosition(double servoPosition1) {
-       servoPosition += servoPosition1;
+       servoPosition = servoPosition1;
     }
     public void lock(boolean x)
     {
