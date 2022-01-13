@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robot;
-import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.drive.SampleTankDrive;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 
@@ -37,25 +36,24 @@ public class DucksBlue extends LinearOpMode {
                 .addDisplacementMarker(() -> state = State.STOPPED)
                 .build();
 
-
         waitForStart();
+
+        trajectory.start();
 
         while (opModeIsActive()) {
             robot.update();
-            {
-                switch (state) {
-                    case STARTED:
-                        break;
-                    case CAROUSELON:
-                        robot.carousel.setPowerAuto(0.5);
-                        break;
-                    case CAROUSELOFF:
-                        robot.carousel.setPowerAuto(0);
-                    case STOPPED:
-                        robot.carousel.setPowerAuto(0);
-                        break;
+            switch (state) {
+                case STARTED:
+                    break;
+                case CAROUSELON:
+                    robot.carousel.setPowerAuto(0.5);
+                    break;
+                case CAROUSELOFF:
+                    robot.carousel.setPowerAuto(0);
+                case STOPPED:
+                    robot.carousel.setPowerAuto(0);
+                    break;
                 }
-            }
         }
     }
 }

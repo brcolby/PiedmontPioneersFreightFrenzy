@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.subsystems;
 
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -17,7 +16,7 @@ public class Arm implements SubSystems {
     Robot robot;
     double num;
     double armPower;
-    double servoPosition;
+    double servoPosition = 0;
     double ticks = 6766.2;
     boolean lock;
 
@@ -26,7 +25,7 @@ public class Arm implements SubSystems {
         this.robot = robot;
         armLiftUpper = robot.hardwareMap.get(DcMotorEx.class, "arm_motor");
         armLiftLower = robot.hardwareMap.get(DcMotorEx.class, "arm_motor2");
-        flipBucket = robot.hardwareMap.get(Servo.class, "servo_bucket");
+        flipBucket = robot.hardwareMap.get(Servo.class, "bucket_servo_2");
         zipTies = robot.hardwareMap.get(DcMotor.class, "intake_motor");
     }
 
@@ -39,15 +38,6 @@ public class Arm implements SubSystems {
         armLiftLower.setTargetPosition(armLiftLower.getCurrentPosition());
         armLiftLower.setTargetPosition(armLiftUpper.getCurrentPosition());
 
-        /*if(servoPosition != 1000)
-            flipBucket.setPosition(servoPosition);
-        else {
-            if (flipBucket.getPosition() > armLiftUpper.getCurrentPosition()*360/6766.2) {
-                flipBucket.setPosition(flipBucket.getPosition() + 1);
-            }
-            else if (flipBucket.getPosition() < armLiftUpper.getCurrentPosition()*360/6766.2) {
-                flipBucket.setPosition(flipBucket.getPosition() - 1);
-            }*/
         flipBucket.setPosition(servoPosition);
     }
 
@@ -59,12 +49,11 @@ public class Arm implements SubSystems {
     {
         armPower = position;
     }
-    public void servoPower(double servoPosition1) {
+    public void servoPosition(double servoPosition1) {
        servoPosition += servoPosition1;
     }
     public void lock(boolean x)
     {
         lock = x;
     }
-
 }

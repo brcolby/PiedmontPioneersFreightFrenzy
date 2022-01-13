@@ -26,8 +26,6 @@ public class Auto {
             robot.arm.intake(-0.3);
             sleep(500);
             robot.arm.intake(0);
-
-
         }
     }
 }

@@ -14,11 +14,10 @@ public class ServoTest extends LinearOpMode {
     public void runOpMode() {
         Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
 
-
-
         waitForStart();
-        robot.arm.servoPower(0.1);
+        while (opModeIsActive()){
+            robot.arm.servoPosition(0.1);
+            robot.update();
+        }
     }
-
 }
-
