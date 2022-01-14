@@ -19,6 +19,7 @@ public class Arm implements SubSystems {
     double servoPosition = 0;
     double ticks = 6766.2;
     boolean lock;
+    boolean direction;
 
 
     public Arm(Robot robot) {
@@ -39,6 +40,10 @@ public class Arm implements SubSystems {
         armLiftLower.setTargetPosition(armLiftUpper.getCurrentPosition());
 
         flipBucket.setPosition(servoPosition);
+        if (direction)
+            flipBucket.setDirection(Servo.Direction.FORWARD);
+        else
+            flipBucket.setDirection(Servo.Direction.REVERSE);
     }
 
     public void intake(double position)
@@ -49,9 +54,11 @@ public class Arm implements SubSystems {
     {
         armPower = position;
     }
-    public void servoPosition(double servoPosition1) {
+    public void servoPosition(double servoPosition1, boolean direction1) {
        servoPosition = servoPosition1;
+       direction = direction1;
     }
+
     public void lock(boolean x)
     {
         lock = x;

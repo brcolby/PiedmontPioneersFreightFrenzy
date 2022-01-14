@@ -16,7 +16,7 @@ public class ServoTest extends LinearOpMode {
 
         waitForStart();
         while (opModeIsActive()){
-            robot.arm.servoPosition(0.1);
+            robot.arm.servoPosition(0.1, true);
             robot.update();
         }
     }
