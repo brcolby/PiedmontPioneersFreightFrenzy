@@ -16,7 +16,7 @@ public class Arm implements SubSystems {
     Robot robot;
     double num;
     double armPower;
-    public  double servoPosition = 0;
+   public  double servoPosition = 0;
     double ticks = 6766.2;
     boolean lock;
     boolean direction;
@@ -48,9 +48,7 @@ public class Arm implements SubSystems {
     }
     public void armSpeed(double position)
     {
-        if (armLiftLower.getTargetPosition() > 0)
-            armPower = position;
-
+        armPower = position;
     }
 //    public void servoPosition(boolean direction1) {
 //       if(direction1)
