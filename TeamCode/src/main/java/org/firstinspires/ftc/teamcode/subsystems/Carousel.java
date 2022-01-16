@@ -24,7 +24,7 @@ public class Carousel implements SubSystems {
     public void setPower(boolean setPower, boolean posOrNeg) {
         if (setPower == false) {
             amount = 0;
-        } else if (amount < 0.4 && amount > -0.4) {
+        } else if (amount < 0.6 && amount > -0.6) {
             if (posOrNeg == false) {
                 amount = amount - 0.01;
             } else
