@@ -33,11 +33,13 @@ public class Arm implements SubSystems {
     @Override
     public void update() {
         zipTies.setPower(num);
-        armLiftLower.setPower(armPower);
-        armLiftUpper.setPower(-armPower);
-
-        armLiftLower.setTargetPosition(armLiftLower.getCurrentPosition());
-        armLiftLower.setTargetPosition(armLiftUpper.getCurrentPosition());
+        if(armLiftUpper.getCurrentPosition() < 2000) {
+            armLiftLower.setPower(armPower);
+            armLiftUpper.setPower(-armPower);
+        }
+        else {
+            armLiftLower.setPower(0);
+        }
 
         flipBucket.setPosition(servoPosition);
     }

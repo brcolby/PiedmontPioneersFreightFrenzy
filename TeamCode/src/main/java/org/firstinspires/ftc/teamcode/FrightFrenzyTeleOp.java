@@ -22,13 +22,13 @@ public class FrightFrenzyTeleOp extends LinearOpMode {
 
             if (robot.gamepad2.a || robot.gamepad1.a)
                 //forwards
-                robot.carousel.setPower(true, true);
+                robot.carousel.setPower(0.5, true);
             else if (robot.gamepad2.b || robot.gamepad1.b)
                 //backwards
-                robot.carousel.setPower(true, false);
+                robot.carousel.setPower(-0.5, false);
             else
                 //carousel not moving
-                robot.carousel.setPower(false, false);
+                robot.carousel.setPower(0, false);
 
 
             if(robot.gamepad2.right_trigger > 0.1)
