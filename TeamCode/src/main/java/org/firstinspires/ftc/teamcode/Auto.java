@@ -4,12 +4,13 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-public class Auto {
-    @TeleOp(name = "Auto", group = "Linear Opmode")
-    public class FrightFrenzyTeleOp extends LinearOpMode {
+
+@TeleOp(name = "Auto", group = "Linear Opmode")
+    public class Auto extends LinearOpMode {
         @RequiresApi(api = Build.VERSION_CODES.N)
         public void runOpMode() {
             Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
@@ -28,4 +29,3 @@ public class Auto {
             robot.arm.intake(0);
         }
     }
-}
