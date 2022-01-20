@@ -48,7 +48,7 @@ public class Arm implements SubSystems {
             if (in)
                 num = 1;
             else
-                num += 0.005;
+                num -= 0.005;
         else
             num = 0;
     }
