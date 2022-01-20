@@ -24,8 +24,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
             robot.drive.setRightPower(0.0, false );
             robot.arm.armSpeed(-0.3);
             sleep(500);
-            robot.arm.intake(-0.3);
+            robot.arm.intake(true, false);
             sleep(500);
-            robot.arm.intake(0);
+            robot.arm.intake(false, false);
         }
     }

@@ -9,7 +9,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class FrightFrenzyTeleOp extends LinearOpMode {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void runOpMode() {
-
         Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
 
 
@@ -22,15 +21,24 @@ public class FrightFrenzyTeleOp extends LinearOpMode {
 
             if (robot.gamepad2.a || robot.gamepad1.a)
                 //forwards
-                robot.carousel.setPower(0.5, true);
+                robot.carousel.setPower(true, true);
             else if (robot.gamepad2.b || robot.gamepad1.b)
                 //backwards
-                robot.carousel.setPower(-0.5, false);
+                robot.carousel.setPower(true, false);
             else
                 //carousel not moving
-                robot.carousel.setPower(0, false);
+                robot.carousel.setPower(false, false);
 
-
+            if(robot.gamepad2.x) {
+                robot.arm.intake(true, true);
+//                robot.arm.servoPosition(30, false);
+            }
+            else if(robot.gamepad2.y)
+                robot.arm.intake(true, false);
+            else {
+                robot.arm.intake(false, false);
+//                robot.arm.servoPosition(0, true);
+            }
             if(robot.gamepad2.right_trigger > 0.1)
                 robot.arm.armSpeed(gamepad2.right_trigger);
             else if(robot.gamepad2.left_trigger > 0.1)
@@ -46,19 +54,6 @@ public class FrightFrenzyTeleOp extends LinearOpMode {
             {
                 if(robot.arm.flipBucket.getPosition() > 0)
                     robot.arm.servoPosition = robot.arm.flipBucket.getPosition() -0.01;
-            }
-            if(gamepad2.x)
-            {
-                robot.arm.flipBucket.setPosition(0);
-                robot.arm.intake(0.75);
-            }
-            else if (gamepad2.y)
-            {
-                robot.arm.intake(-0.75);
-            }
-           else
-            {
-                robot.arm.intake(0);
             }
 
             robot.update();

@@ -21,15 +21,16 @@ public class Carousel implements SubSystems {
         carouselMotor.setPower(amount);
     } // takes set power/direction and changes it on the robot
 
-    public void setPower(double setPower, boolean posOrNeg) {
-        if(posOrNeg)
-        {
-            amount = setPower;
+    public void setPower(boolean setPower, boolean posOrNeg) {
+        if (!setPower) {
+            amount = 0;
+        } else if (amount < 0.4 && amount > -0.4) {
+            if (posOrNeg) {
+                amount += 0.01;
+            } else
+                amount -= 0.01;
         }
-        else
-        {
-            amount = -1*setPower;
-        }
+
     }
     public void setPowerAuto(double amount1)
     {
