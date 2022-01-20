@@ -21,12 +21,11 @@ public class Arm implements SubSystems {
     boolean lock;
     boolean direction;
 
-
     public Arm(Robot robot) {
         this.robot = robot;
         armLiftUpper = robot.hardwareMap.get(DcMotorEx.class, "arm_motor");
         armLiftLower = robot.hardwareMap.get(DcMotorEx.class, "arm_motor2");
-        flipBucket = robot.hardwareMap.get(Servo.class, "bucket_servo_2");
+        flipBucket = robot.hardwareMap.get(Servo.class, "bucket_servo");
         zipTies = robot.hardwareMap.get(DcMotor.class, "intake_motor");
     }
 
@@ -44,12 +43,16 @@ public class Arm implements SubSystems {
         flipBucket.setPosition(servoPosition);
     }
 
-    public void intake(double position)
-    {
-        num = position;
+    public void intake(boolean on, boolean in) {
+        if (-0.5 < num && on)
+            if (in)
+                num = 1;
+            else
+                num -= 0.005;
+        else
+            num = 0;
     }
-    public void armSpeed(double position)
-    {
+    public void armSpeed(double position) {
         armPower = position;
     }
 //    public void servoPosition(boolean direction1) {
