@@ -11,7 +11,6 @@ public class FrightFrenzyTeleOp extends LinearOpMode {
     public void runOpMode() {
         Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
 
-
         robot.arm.flipBucket.setPosition(0.4);
         waitForStart();
         while (opModeIsActive()) {
