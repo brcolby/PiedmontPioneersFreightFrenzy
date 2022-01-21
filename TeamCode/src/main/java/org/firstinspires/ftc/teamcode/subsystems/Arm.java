@@ -52,6 +52,7 @@ public class Arm implements SubSystems {
         else
             num = 0;
     }
+
     public void armSpeed(double position) {
         armPower = position;
     }

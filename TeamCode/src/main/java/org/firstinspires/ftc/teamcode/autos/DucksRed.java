@@ -1,5 +1,5 @@
-
 package org.firstinspires.ftc.teamcode.autos;
+/*
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -57,3 +57,4 @@ public class DucksRed extends LinearOpMode {
     }
 }
 
+*/

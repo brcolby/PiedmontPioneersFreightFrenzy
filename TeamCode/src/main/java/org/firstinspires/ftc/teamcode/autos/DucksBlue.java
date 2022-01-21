@@ -1,6 +1,5 @@
-
 package org.firstinspires.ftc.teamcode.autos;
-
+/*
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -58,3 +57,4 @@ public class DucksBlue extends LinearOpMode {
     }
 }
 
+*/
