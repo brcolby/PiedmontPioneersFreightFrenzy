@@ -19,7 +19,7 @@ public class CubeDumpAuto extends LinearOpMode {
             robot.update();
             robot.drive.setRightPower(0.5, false);
             robot.update();
-            sleep(2000);
+            sleep(2050);
             robot.update();
             robot.drive.setRightPower(0.4, false);
             robot.update();
@@ -55,7 +55,7 @@ public class CubeDumpAuto extends LinearOpMode {
             robot.update();
             robot.drive.setRightPower(0.4, false);
             robot.update();
-            sleep(200);
+            sleep(400);
             robot.update();
             robot.drive.setLeftPower(0.0, false);
             robot.update();
@@ -67,13 +67,13 @@ public class CubeDumpAuto extends LinearOpMode {
             robot.update();
             robot.arm.armSpeed(0);
             robot.update();
-            robot.arm.autoIntake(-0.5);
+            robot.arm.autoIntake(-0.3);
             robot.update();
-            sleep(1500);
+            sleep(4000);
             robot.update();
             robot.arm.autoIntake(0);
             robot.update();
-            robot.drive.setLeftPower(-0.2, false);
+            robot.drive.setLeftPower(-0.25, false);
             robot.update();
             robot.drive.setRightPower(-0.3, false);
             robot.update();
