@@ -1,4 +1,3 @@
-
 package org.firstinspires.ftc.teamcode.autos;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
@@ -56,4 +55,3 @@ public class DucksRed extends LinearOpMode {
         }
     }
 }
-

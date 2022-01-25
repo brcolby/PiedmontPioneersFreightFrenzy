@@ -16,7 +16,7 @@ public class GetOutOfWayRed extends LinearOpMode {
     }
     public State state = State.STARTED;
     public void runOpMode() {
-         Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
+        Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
         waitForStart();
         SampleTankDrive drive = new SampleTankDrive(hardwareMap);
 

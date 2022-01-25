@@ -48,10 +48,15 @@ public class Arm implements SubSystems {
             if (in)
                 num = 1;
             else
-                num -= 0.005;
+                num -= 0.01;
         else
             num = 0;
     }
+
+    public void autoIntake(double power) {
+        num = power;
+    }
+
     public void armSpeed(double position) {
         armPower = position;
     }
