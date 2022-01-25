@@ -23,19 +23,21 @@ public class DucksBlue extends LinearOpMode {
         waitForStart();
         SampleTankDrive drive = new SampleTankDrive(hardwareMap);
         TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d())
-                .forward(24)
-                .turn(Math.toRadians(45))
-                .forward(-30)
+                .forward(-2)
+                .turn(Math.toRadians(-5.3))
+                .forward(2.5)
                 .addDisplacementMarker(() -> state = State.CAROUSELON)
                 .waitSeconds(3)
                 .addDisplacementMarker(() -> state = State.CAROUSELOFF)
-                .forward(30)
-                .turn(Math.toRadians(45))
-                .forward(-25)
+                .forward(-2.5)
+                .turn(Math.toRadians(-5.3))
+                .forward(2)
                 .addDisplacementMarker(() -> state = State.STOPPED)
                 .build();
 
-        while (opModeIsActive()) {
+        drive.followTrajectorySequence(trajectory);
+
+        while (!isStopRequested() && opModeIsActive()) {
             robot.update();
             switch (state) {
                 case STARTED:
