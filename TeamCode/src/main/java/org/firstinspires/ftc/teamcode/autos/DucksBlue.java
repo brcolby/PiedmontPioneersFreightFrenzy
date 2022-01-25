@@ -35,10 +35,6 @@ public class DucksBlue extends LinearOpMode {
                 .addDisplacementMarker(() -> state = State.STOPPED)
                 .build();
 
-        waitForStart();
-
-        trajectory.start();
-
         while (opModeIsActive()) {
             robot.update();
             switch (state) {
