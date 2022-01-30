@@ -23,30 +23,40 @@ public class DucksBlue extends LinearOpMode {
         waitForStart();
         SampleTankDrive drive = new SampleTankDrive(hardwareMap);
         TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d())
-                .forward(24)
-                .turn(Math.toRadians(45))
-                .forward(-30)
-                .addDisplacementMarker(() -> state = State.CAROUSELON)
+                .forward(-2)
+                .turn(Math.toRadians(-5.25))
+                .forward(2.71)
+                .addDisplacementMarker(() -> {robot.carousel.setPowerAuto(1); robot.update();})
                 .waitSeconds(3)
-                .addDisplacementMarker(() -> state = State.CAROUSELOFF)
-                .forward(30)
-                .turn(Math.toRadians(45))
-                .forward(-25)
-                .addDisplacementMarker(() -> state = State.STOPPED)
+                .addDisplacementMarker(() -> {robot.carousel.setPowerAuto(0); robot.update();})
+                .forward(-2.71)
+                .turn(Math.toRadians(-5.25))
+                .forward(2)
+                .addDisplacementMarker(() -> telemetry.addData("State ", "stopped"))
                 .build();
+
+        drive.followTrajectorySequence(trajectory);
 
         while (opModeIsActive()) {
             robot.update();
             switch (state) {
                 case STARTED:
-                    continue;
+                    telemetry.addData("State ", state.name());
+                    break;
                 case CAROUSELON:
                     robot.carousel.setPowerAuto(0.5);
+                    robot.update();
+                    telemetry.addData("State ", state.name());
                     break;
                 case CAROUSELOFF:
                     robot.carousel.setPowerAuto(0);
+                    robot.update();
+                    telemetry.addData("State ", state.name());
+                    break;
                 case STOPPED:
                     robot.carousel.setPowerAuto(0);
+                    telemetry.addData("State ", state.name());
+                    robot.update();
                     break;
                 }
         }
