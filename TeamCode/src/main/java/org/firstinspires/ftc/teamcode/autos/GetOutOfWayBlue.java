@@ -17,20 +17,18 @@ public class GetOutOfWayBlue extends LinearOpMode {
     public State state = State.STARTED;
 
     public void runOpMode() {
-         Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
+
+        waitForStart();
 
         SampleTankDrive drive = new SampleTankDrive(hardwareMap);
 
         TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d(-35, 60, Math.toRadians(-90)))
-                .forward(24)
-                .turn(Math.toRadians(90))
-                .forward(48)
+                .forward(2)
+                .turn(Math.toRadians(10.5))
+                .forward(4)
                 .build();
 
-
-        waitForStart();
-
-        trajectory.start();
+        drive.followTrajectorySequence(trajectory);
 
     }
 }
