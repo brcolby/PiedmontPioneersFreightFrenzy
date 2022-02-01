@@ -25,13 +25,22 @@ public class GetOutOfWayBlue extends LinearOpMode {
                 .forward(2)
                 .turn(Math.toRadians(10.5))
                 .forward(4)
+                .addDisplacementMarker(() -> state = State.STOPPED)
                 .build();
         waitForStart();
 
         drive.followTrajectorySequence(trajectory);
 
         while (opModeIsActive()) {
+            robot.update();
+            switch (state) {
+                case STARTED:
+                    telemetry.addData("State ", state.name());
+                    break;
 
+                case STOPPED:
+                    telemetry.addData("State ", state.name());
+            }
         }
     }
 }
