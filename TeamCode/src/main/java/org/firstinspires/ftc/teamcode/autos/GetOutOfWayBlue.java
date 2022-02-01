@@ -18,7 +18,6 @@ public class GetOutOfWayBlue extends LinearOpMode {
 
     public void runOpMode() {
 
-        waitForStart();
 
         SampleTankDrive drive = new SampleTankDrive(hardwareMap);
 
@@ -27,6 +26,8 @@ public class GetOutOfWayBlue extends LinearOpMode {
                 .turn(Math.toRadians(10.5))
                 .forward(4)
                 .build();
+        waitForStart();
+
 
         drive.followTrajectorySequence(trajectory);
 

@@ -1,3 +1,4 @@
+
 package org.firstinspires.ftc.teamcode.autos;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
@@ -20,9 +21,8 @@ public class DucksBlue extends LinearOpMode {
 
     public void runOpMode() {
         Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
-        waitForStart();
         SampleTankDrive drive = new SampleTankDrive(hardwareMap);
-        TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d())
+        TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d(-35, 60, Math.toRadians(-90)))
                 .forward(-2)
                 .turn(Math.toRadians(-5.25))
                 .forward(2.71)
@@ -36,6 +36,10 @@ public class DucksBlue extends LinearOpMode {
                 .build();
 
         drive.followTrajectorySequence(trajectory);
+
+        waitForStart();
+
+        trajectory.start();
 
         while (opModeIsActive()) {
             robot.update();
@@ -58,3 +62,4 @@ public class DucksBlue extends LinearOpMode {
         }
     }
 }
+
