@@ -29,7 +29,7 @@ public class DucksBlue extends LinearOpMode {
                 .addDisplacementMarker(() -> {robot.carousel.setPowerAuto(1); robot.update();})
                 .waitSeconds(3)
                 .addDisplacementMarker(() -> {robot.carousel.setPowerAuto(0); robot.update();})
-                .forward(-2.71)
+                .forward(-4)
                 .turn(Math.toRadians(-5.25))
                 .forward(2)
                 .addDisplacementMarker(() -> telemetry.addData("State ", "stopped"))

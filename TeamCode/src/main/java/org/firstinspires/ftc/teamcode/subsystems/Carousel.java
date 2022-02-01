@@ -22,12 +22,12 @@ public class Carousel implements SubSystems {
     } // takes set power/direction and changes it on the robot
 
     public void setPower(boolean setPower, boolean posOrNeg) {
-        if (!setPower) {
+        if (!setPower)
             amount = 0;
-        } else if (amount < 0.4 && amount > -0.4) {
-            if (posOrNeg) {
+        else if (amount < 0.4 && amount > -0.4) {
+            if (posOrNeg)
                 amount += 0.01;
-            } else
+            else
                 amount -= 0.01;
         }
 
