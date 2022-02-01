@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robot;
-import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.drive.SampleTankDrive;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 
@@ -17,39 +16,47 @@ public class DucksRed extends LinearOpMode {
         CAROUSELOFF,
         STOPPED
     }
-    public DucksBlue.State state = DucksBlue.State.STARTED;
+    public State state = State.STARTED;
 
     public void runOpMode() {
-         Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
+        Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
+        waitForStart();
         SampleTankDrive drive = new SampleTankDrive(hardwareMap);
-        TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d(-35, -60, Math.toRadians(90)))
-                .forward(24)
-                .turn(Math.toRadians(-45))
-                .forward(-30)
-                .addDisplacementMarker(() -> state = DucksBlue.State.CAROUSELON)
+        TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d())
+                .forward(-2)
+                .turn(Math.toRadians(5.25))
+                .forward(2.71)
+                .addDisplacementMarker(() -> {robot.carousel.setPowerAuto(-1); robot.update();})
                 .waitSeconds(3)
-                .addDisplacementMarker(() -> state = DucksBlue.State.CAROUSELOFF)
-                .forward(30)
-                .turn(Math.toRadians(-45))
-                .forward(-25)
-                .addDisplacementMarker(() -> state = DucksBlue.State.STOPPED)
+                .addDisplacementMarker(() -> {robot.carousel.setPowerAuto(0); robot.update();})
+                .forward(-4)
+                .turn(Math.toRadians(5.25))
+                .forward(2)
+                .addDisplacementMarker(() -> telemetry.addData("State ", "stopped"))
                 .build();
 
-
-        waitForStart();
+        drive.followTrajectorySequence(trajectory);
 
         while (opModeIsActive()) {
-        robot.update();
+            robot.update();
             switch (state) {
                 case STARTED:
+                    telemetry.addData("State ", state.name());
                     break;
                 case CAROUSELON:
-                    robot.carousel.setPowerAuto(1);
+                    robot.carousel.setPowerAuto(0.5);
+                    robot.update();
+                    telemetry.addData("State ", state.name());
                     break;
                 case CAROUSELOFF:
                     robot.carousel.setPowerAuto(0);
+                    robot.update();
+                    telemetry.addData("State ", state.name());
+                    break;
                 case STOPPED:
                     robot.carousel.setPowerAuto(0);
+                    telemetry.addData("State ", state.name());
+                    robot.update();
                     break;
             }
         }
