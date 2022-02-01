@@ -7,6 +7,8 @@ import com.noahbres.meepmeep.roadrunner.DriveTrainType;
 
 public class MeepMeepTesting {
     public static void main(String[] args) {
+        GetOutOfWayStuff();
+        /*
         // TODO: If you experience poor performance, enable this flag
         // System.setProperty("sun.java2d.opengl", "true");
 
@@ -59,9 +61,8 @@ public class MeepMeepTesting {
                                 .build()
                 )
                 .start();
-
+        */
     }
-
     public static void GetOutOfWayStuff() {
         // TODO: If you experience poor performance, enable this flag
         // System.setProperty("sun.java2d.opengl", "true");

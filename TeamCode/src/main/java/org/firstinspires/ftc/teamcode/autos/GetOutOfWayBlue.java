@@ -17,7 +17,7 @@ public class GetOutOfWayBlue extends LinearOpMode {
     public State state = State.STARTED;
 
     public void runOpMode() {
-
+        Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
 
         SampleTankDrive drive = new SampleTankDrive(hardwareMap);
 
@@ -28,8 +28,10 @@ public class GetOutOfWayBlue extends LinearOpMode {
                 .build();
         waitForStart();
 
-
         drive.followTrajectorySequence(trajectory);
 
+        while (opModeIsActive()) {
+
+        }
     }
 }
