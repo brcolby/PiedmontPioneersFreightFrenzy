@@ -26,13 +26,13 @@ public class DucksBlue extends LinearOpMode {
                 .forward(-2)
                 .turn(Math.toRadians(-5.25))
                 .forward(2.71)
-                .addDisplacementMarker(() -> {robot.carousel.setPowerAuto(1); robot.update();})
+                .addDisplacementMarker(() -> state = State.CAROUSELON)
                 .waitSeconds(3)
-                .addDisplacementMarker(() -> {robot.carousel.setPowerAuto(0); robot.update();})
+                .addDisplacementMarker(() -> state = State.CAROUSELOFF)
                 .forward(-4)
                 .turn(Math.toRadians(-5.25))
                 .forward(2)
-                .addDisplacementMarker(() -> telemetry.addData("State ", "stopped"))
+                .addDisplacementMarker(() -> state = State.STOPPED)
                 .build();
 
         drive.followTrajectorySequence(trajectory);
@@ -45,19 +45,15 @@ public class DucksBlue extends LinearOpMode {
                     break;
                 case CAROUSELON:
                     robot.carousel.setPowerAuto(0.5);
-                    robot.update();
                     telemetry.addData("State ", state.name());
                     break;
                 case CAROUSELOFF:
                     robot.carousel.setPowerAuto(0);
-                    robot.update();
                     telemetry.addData("State ", state.name());
                     break;
                 case STOPPED:
                     robot.carousel.setPowerAuto(0);
                     telemetry.addData("State ", state.name());
-                    robot.update();
-                    break;
                 }
         }
     }

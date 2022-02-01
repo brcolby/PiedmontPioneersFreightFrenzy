@@ -18,7 +18,7 @@ public class GetOutOfWayBlue extends LinearOpMode {
 
     public void runOpMode() {
          Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
-        waitForStart();
+
         SampleTankDrive drive = new SampleTankDrive(hardwareMap);
 
         TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d(-35, 60, Math.toRadians(-90)))
@@ -29,6 +29,7 @@ public class GetOutOfWayBlue extends LinearOpMode {
 
 
         waitForStart();
+
         trajectory.start();
 
     }
