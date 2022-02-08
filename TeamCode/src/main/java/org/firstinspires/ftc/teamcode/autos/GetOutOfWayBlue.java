@@ -23,7 +23,7 @@ public class GetOutOfWayBlue extends LinearOpMode {
 
         TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d(-35, 60, Math.toRadians(-90)))
                 .forward(2)
-                .turn(Math.toRadians(10.5))
+                .turn(Math.toRadians(-10.5))
                 .forward(4)
                 .addDisplacementMarker(() -> state = State.STOPPED)
                 .build();
@@ -37,7 +37,6 @@ public class GetOutOfWayBlue extends LinearOpMode {
                 case STARTED:
                     telemetry.addData("State ", state.name());
                     break;
-
                 case STOPPED:
                     telemetry.addData("State ", state.name());
             }
