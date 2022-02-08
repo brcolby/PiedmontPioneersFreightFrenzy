@@ -37,7 +37,6 @@ public class GetOutOfWayBlue extends LinearOpMode {
                 case STARTED:
                     telemetry.addData("State ", state.name());
                     break;
-
                 case STOPPED:
                     telemetry.addData("State ", state.name());
             }
