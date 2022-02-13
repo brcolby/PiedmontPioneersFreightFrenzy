@@ -33,7 +33,7 @@ public class FrightFrenzyTeleOp extends LinearOpMode {
             }
             else if(robot.gamepad2.dpad_down)
                 robot.arm.intake(-0.5);
-            else if (robot.gamepad1.dpad_up)
+            else if (robot.gamepad2.dpad_up)
                 robot.arm.intake(-0.75);
             else {
                 robot.arm.intake(0);

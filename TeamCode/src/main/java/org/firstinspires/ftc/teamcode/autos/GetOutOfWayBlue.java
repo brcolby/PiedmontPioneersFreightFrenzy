@@ -23,8 +23,8 @@ public class GetOutOfWayBlue extends LinearOpMode {
 
         TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d(-35, 60, Math.toRadians(-90)))
                 .forward(3)
-                .turn(Math.toRadians(-10.5))
-                .forward(6)
+                .turn(Math.toRadians(-11))
+                .forward(8)
                 .addDisplacementMarker(() -> state = State.STOPPED)
                 .build();
         waitForStart();
