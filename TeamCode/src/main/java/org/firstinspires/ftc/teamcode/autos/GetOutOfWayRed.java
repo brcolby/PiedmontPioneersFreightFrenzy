@@ -21,9 +21,9 @@ public class GetOutOfWayRed extends LinearOpMode {
         SampleTankDrive drive = new SampleTankDrive(hardwareMap);
 
         TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d(-35, 60, Math.toRadians(-90)))
-                .forward(2)
+                .forward(3)
                 .turn(Math.toRadians(10.5))
-                .forward(4)
+                .forward(6)
                 .addDisplacementMarker(() -> state = GetOutOfWayRed.State.STOPPED)
                 .build();
 
