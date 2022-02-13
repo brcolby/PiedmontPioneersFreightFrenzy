@@ -22,7 +22,7 @@ public class GetOutOfWayRed extends LinearOpMode {
 
         TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d(-35, 60, Math.toRadians(-90)))
                 .forward(2)
-                .turn(Math.toRadians(-10.5))
+                .turn(Math.toRadians(10.5))
                 .forward(4)
                 .addDisplacementMarker(() -> state = GetOutOfWayRed.State.STOPPED)
                 .build();
