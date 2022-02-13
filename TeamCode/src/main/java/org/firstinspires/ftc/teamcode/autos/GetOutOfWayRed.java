@@ -35,8 +35,8 @@ public class GetOutOfWayRed extends LinearOpMode {
             robot.update();
             switch (state) {
                 case STARTED:
-                case STOPPED:
                     break;
+                case STOPPED:
             }
         }
     }
