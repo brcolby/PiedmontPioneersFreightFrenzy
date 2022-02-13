@@ -35,10 +35,8 @@ public class GetOutOfWayBlue extends LinearOpMode {
             robot.update();
             switch (state) {
                 case STARTED:
-                    telemetry.addData("State ", state.name());
                     break;
                 case STOPPED:
-                    telemetry.addData("State ", state.name());
             }
         }
     }

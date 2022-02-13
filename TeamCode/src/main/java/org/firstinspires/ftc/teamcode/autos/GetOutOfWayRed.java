@@ -27,8 +27,9 @@ public class GetOutOfWayRed extends LinearOpMode {
                 .addDisplacementMarker(() -> state = GetOutOfWayRed.State.STOPPED)
                 .build();
 
-
         waitForStart();
+
+        drive.followTrajectorySequence(trajectory);
 
         while(opModeIsActive()) {
             robot.update();
