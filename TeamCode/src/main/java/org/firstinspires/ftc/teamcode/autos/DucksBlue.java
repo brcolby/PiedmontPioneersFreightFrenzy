@@ -32,7 +32,6 @@ public class DucksBlue extends LinearOpMode {
                 .addDisplacementMarker(()-> state = State.CAROUSELOFF)
                 .turn(Math.toRadians(-5.25))
                 .forward(2)
-                .addDisplacementMarker(() -> state = State.STOPPED)
                 .build();
 
         drive.followTrajectorySequence(trajectory);
