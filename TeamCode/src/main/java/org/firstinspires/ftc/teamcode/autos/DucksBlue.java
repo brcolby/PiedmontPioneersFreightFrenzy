@@ -34,29 +34,23 @@ public class DucksBlue extends LinearOpMode {
                 .forward(2)
                 .build();
 
-        drive.followTrajectorySequence(trajectory);
-
         waitForStart();
 
-        trajectory.start();
+        drive.followTrajectorySequence(trajectory);
 
         while (opModeIsActive()) {
             robot.update();
             switch (state) {
                 case STARTED:
-                    telemetry.addData("State ", state.name());
                     break;
                 case CAROUSELON:
                     robot.carousel.setPowerAuto(0.5);
-                    telemetry.addData("State ", state.name());
                     break;
                 case CAROUSELOFF:
                     robot.carousel.setPowerAuto(0);
-                    telemetry.addData("State ", state.name());
                     break;
                 case STOPPED:
                     robot.carousel.setPowerAuto(0);
-                    telemetry.addData("State ", state.name());
                 }
         }
     }
