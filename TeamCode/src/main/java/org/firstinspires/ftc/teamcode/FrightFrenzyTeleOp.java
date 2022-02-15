@@ -47,11 +47,11 @@ public class FrightFrenzyTeleOp extends LinearOpMode {
                 robot.arm.armSpeed(0.0);
             if(gamepad2.right_bumper) {
                 if(robot.arm.flipBucket.getPosition() < 0.7)
-                    robot.arm.servoPosition = robot.arm.flipBucket.getPosition() + 0.01;
+                    robot.arm.servoPosition = robot.arm.flipBucket.getPosition() + 0.005;
             }
             if(gamepad2.left_bumper) {
                 if(robot.arm.flipBucket.getPosition() > 0)
-                    robot.arm.servoPosition = robot.arm.flipBucket.getPosition() -0.01;
+                    robot.arm.servoPosition = robot.arm.flipBucket.getPosition() -0.005;
             }
 
             robot.update();

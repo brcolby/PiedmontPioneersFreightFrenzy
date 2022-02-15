@@ -35,6 +35,8 @@ public class DucksRed extends LinearOpMode {
                 .addDisplacementMarker(() -> telemetry.addData("State ", "stopped"))
                 .build();
 
+        waitForStart();
+
         drive.followTrajectorySequence(trajectory);
 
         while (opModeIsActive()) {
