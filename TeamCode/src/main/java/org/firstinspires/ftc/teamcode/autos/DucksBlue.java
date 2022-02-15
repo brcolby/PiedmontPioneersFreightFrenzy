@@ -23,14 +23,13 @@ public class DucksBlue extends LinearOpMode {
         Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
         SampleTankDrive drive = new SampleTankDrive(hardwareMap);
         TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d(-35, 60, Math.toRadians(-90)))
-                .addTemporalMarker(0.5, ()-> {System.out.println("START");})
                 .forward(-2)
                 .turn(Math.toRadians(-5.25))
                 .forward(2.71)
-                .addDisplacementMarker(4.71, ()-> {System.out.println("ON");})
+                .addDisplacementMarker(4.71, ()-> state = State.CAROUSELON)
                 .waitSeconds(3)
                 .forward(-4)
-                .UNSTABLE_addDisplacementMarkerOffset(0, ()-> {System.out.println("OFF");})
+                .UNSTABLE_addDisplacementMarkerOffset(0, ()-> state = State.CAROUSELOFF)
                 .turn(Math.toRadians(-5.25))
                 .forward(2)
                 .build();
