@@ -26,9 +26,9 @@ public class DucksBlue extends LinearOpMode {
                 .forward(-2)
                 .turn(Math.toRadians(-5.25))
                 .forward(2.71)
-                .UNSTABLE_addTemporalMarkerOffset(0.1, ()-> state = State.CAROUSELON)
+                .UNSTABLE_addTemporalMarkerOffset(0.1, ()-> robot.carousel.setPowerAuto(1))
                 .waitSeconds(3)
-                .UNSTABLE_addTemporalMarkerOffset(2.9, ()-> state = State.CAROUSELOFF)
+                .UNSTABLE_addTemporalMarkerOffset(2.9, ()-> robot.carousel.setPowerAuto(0))
 
                 .forward(-4)
                 .turn(Math.toRadians(-5.25))
