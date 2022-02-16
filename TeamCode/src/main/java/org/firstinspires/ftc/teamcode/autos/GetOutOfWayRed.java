@@ -21,20 +21,22 @@ public class GetOutOfWayRed extends LinearOpMode {
         SampleTankDrive drive = new SampleTankDrive(hardwareMap);
 
         TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d(-35, 60, Math.toRadians(-90)))
-                .forward(24)
-                .turn(Math.toRadians(-90))
-                .forward(48)
+                .forward(3)
+                .turn(Math.toRadians(11))
+                .forward(9)
+                .addDisplacementMarker(() -> state = GetOutOfWayRed.State.STOPPED)
                 .build();
 
-
         waitForStart();
+
+        drive.followTrajectorySequence(trajectory);
 
         while(opModeIsActive()) {
             robot.update();
             switch (state) {
                 case STARTED:
-                case STOPPED:
                     break;
+                case STOPPED:
             }
         }
     }

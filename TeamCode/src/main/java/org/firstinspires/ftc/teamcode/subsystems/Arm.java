@@ -43,14 +43,8 @@ public class Arm implements SubSystems {
         flipBucket.setPosition(servoPosition);
     }
 
-    public void intake(boolean on, boolean in) {
-        if (-0.5 < num && on)
-            if (in)
-                num = 1;
-            else
-                num -= 0.01;
-        else
-            num = 0;
+    public void intake(double power) {
+        num = power;
     }
 
     public void autoIntake(double power) {
