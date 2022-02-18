@@ -10,11 +10,8 @@ import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 
 @TeleOp(name = "Red Get Out of The Way", group = "Linear Opmode")
 public class GetOutOfWayRed extends LinearOpMode {
-    public enum State{
-        STARTED,
-        STOPPED
-    }
-    public State state = State.STARTED;
+
+
     public void runOpMode() {
         Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
         waitForStart();
@@ -23,8 +20,8 @@ public class GetOutOfWayRed extends LinearOpMode {
         TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d(-35, 60, Math.toRadians(-90)))
                 .forward(3.5)
                 .turn(Math.toRadians(11))
-                .forward(8)
-                .addDisplacementMarker(() -> state = GetOutOfWayRed.State.STOPPED)
+                .forward(12)
+
                 .build();
 
         waitForStart();
@@ -33,11 +30,7 @@ public class GetOutOfWayRed extends LinearOpMode {
 
         while(opModeIsActive()) {
             robot.update();
-            switch (state) {
-                case STARTED:
-                    break;
-                case STOPPED:
-            }
+
         }
     }
 }
