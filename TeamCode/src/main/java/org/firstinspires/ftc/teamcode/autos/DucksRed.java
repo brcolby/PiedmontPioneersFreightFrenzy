@@ -20,17 +20,15 @@ public class DucksRed extends LinearOpMode {
                 .forward(-2)
                 .turn(Math.toRadians(5.25))
                 .forward(2.71)
-                .waitSeconds(3)
+                .waitSeconds(4)
                 .forward(-4)
                 .turn(Math.toRadians(5.25))
                 .forward(2)
                 .build();
 
         waitForStart();
-        robot.carousel.setPowerAuto(0.5);
+        robot.carousel.setPowerAuto(-0.3);
         robot.update();
         drive.followTrajectorySequence(trajectory);
-
-
     }
 }

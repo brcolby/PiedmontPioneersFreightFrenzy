@@ -22,13 +22,13 @@ public class DucksBlue extends LinearOpMode {
     public void runOpMode() {
         Robot robot = new Robot(hardwareMap, gamepad1, gamepad2);
         SampleTankDrive drive = new SampleTankDrive(hardwareMap);
-        robot.carousel.setPowerAuto(0.5);
+        robot.carousel.setPowerAuto(0.3);
         TrajectorySequence trajectory = drive.trajectorySequenceBuilder(new Pose2d())
                 .forward(-2)
                 .turn(Math.toRadians(-5.25))
                 .forward(2.71)
 
-                .waitSeconds(3)
+                .waitSeconds(4 )
                 .UNSTABLE_addTemporalMarkerOffset(2.9, ()-> robot.carousel.setPowerAuto(0))
                 .forward(-4)
                 .turn(Math.toRadians(-5.25))
@@ -38,21 +38,5 @@ public class DucksBlue extends LinearOpMode {
         waitForStart();
 
         drive.followTrajectorySequence(trajectory);
-
-//        while (opModeIsActive()) {
-//            robot.update();
-//            switch (state) {
-//                case STARTED:
-//                    break;
-//                case CAROUSELON:
-//                    robot.carousel.setPower(true, true);
-//                    break;
-//                case CAROUSELOFF:
-//                    robot.carousel.setPower(false, true);
-//                    break;
-//                case STOPPED:
-//                    robot.carousel.setPower(false, false);
-//            }
-//        }
     }
 }
